@@ -1,0 +1,36 @@
+.game-field{
+    display:flex;
+    width: 35vw;
+    height: 40vw;
+    justify-content: space-evenly;
+    background-color: rgb(162, 162, 255);
+    flex-wrap: wrap;
+}
+
+.icon{
+    background-color: white;
+    width:5vw;
+    height:5vw;
+    cursor: pointer; 
+    color:black;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid black;
+}
+
+.heart{
+    background-image: url('../icons-images/heart.png');
+}
+
+.clubs{
+    background-image: url('../icons-images/clubs.png');
+}
+
+.spades{
+    background-image: url('../icons-images/spades.png');
+}
+
+.diamonds{
+    background-image: url('../icons-images/diamonds.png');
+}
