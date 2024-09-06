@@ -19,6 +19,12 @@
     border: 1px solid black;
 }
 
+.row{
+    display: flex;
+    width: 35vw;
+    justify-content: space-around;
+}
+
 .heart{
     background-image: url('../icons-images/heart.png');
 }
