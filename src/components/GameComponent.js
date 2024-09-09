@@ -1,9 +1,9 @@
 import React, {useState} from "react"
-import "./styles/game.css"
-import heart from './icons-images/heart.png';
-import clubs from './icons-images/clubs.png';
-import spades from './icons-images/spades.png';
-import diamonds from './icons-images/diamonds.png';
+import "../styles/game.css"
+import heart from '../icons-images/heart.png';
+import clubs from '../icons-images/clubs.png';
+import spades from '../icons-images/spades.png';
+import diamonds from '../icons-images/diamonds.png';
 
 function GameComponent(){
     const iconsType = [heart, clubs, spades, diamonds];
