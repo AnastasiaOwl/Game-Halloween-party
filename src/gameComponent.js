@@ -64,7 +64,7 @@ function GameComponent(){
     };
 
     const deleteIcon=(rowIndex, columnIndex)=>{
-        let matchingIcons=findMatchingIcons(rowIndex, columnIndex);
+        let matchingIcons = findMatchingIcons(rowIndex, columnIndex);
         let newGameIcons = gameIcons.map(row => [...row]);
         matchingIcons.forEach(([row, col]) => {
             newGameIcons[row][col] = null; 
