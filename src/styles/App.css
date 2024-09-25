@@ -1,6 +1,15 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
-  background-color: #282c34;
+  background-image: url('../background-images/background.png');
+  background-size: cover;
+  background-repeat: no-repeat; 
+  background-position: center;  
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -8,5 +17,15 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+.overlay{
+  position: fixed;
+  width: 70vw; 
+  height: 43vw; 
+  background-color: rgba(0, 0, 0, 0.8); 
+  place-self: center;
+  border-radius: 2vw;
+  z-index: 1000;
 }
 

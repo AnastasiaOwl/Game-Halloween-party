@@ -1,0 +1,61 @@
+.modal {
+    position: absolute;
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    place-self: center;
+    justify-content: center;
+    align-items: center;
+    background-color: #001b2cc6;
+    padding: 2vw;
+    width: 48vw;
+    border-radius: 8px;
+    z-index: 1000;
+    border: 4px solid rgb(255, 145, 0);
+  }
+
+  .close{
+    position: absolute;
+    display: flex;
+    align-items: center;
+    top: 1vw; 
+    right: 1vw;
+    cursor: pointer;
+  }
+
+.gameOver-title,
+.gameOver-massage{
+  color:#ff8800;
+  font-size: 3vw;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.gameOver-title{
+  font-size: 3.5vw;
+}
+
+.restart-button{
+  margin-top: 1.5vw;
+  width: 8vw;
+  background-color: #0000008a;
+  border: 1.5px solid rgb(255, 145, 0);
+  border-radius: 0.4vw;
+  color:#ff8800;
+  font-size: 1.5vw;
+  cursor: pointer;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-evenly;
+}
+
+.button-icon{
+  background-color: transparent;
+  width:2vw;
+  height:2vw;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none;
+}

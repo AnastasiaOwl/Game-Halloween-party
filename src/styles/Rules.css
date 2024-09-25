@@ -1,0 +1,82 @@
+.pumpkin-guide{
+    background-color: transparent;
+    width:12vw;
+    height:12vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+    margin-left: 4vw;
+}
+
+.speech-buble{
+    margin-left:5vw;
+    place-self: center;
+    width: 45vw;
+    height: 30vw;
+    background-image: url('../icons-images/speech-buble.png'); 
+    background-size: cover;  
+    background-position: center;
+    color: rgb(255, 153, 0); 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.text{
+    display: flex;
+    flex-direction: column;
+    place-self: center;
+    font-size: 1.2vw;
+    align-items: center;
+    justify-content: center;
+    margin-left: 4vw;
+    margin-bottom: 3vw;
+}
+
+.intro-text,
+.rules-text{
+    width: 38vw;
+    height: 5vw;
+    text-align: justify; 
+}
+
+.intro-text{
+    height: 4vw;
+}
+
+.container{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-right: 1.5vw;
+}
+
+.startGame-button{
+    margin-bottom: 1vw;
+    width: 11vw;
+    background-color: #0000008a;
+    border: 1.5px solid rgb(255, 145, 0);
+    border-radius: 0.4vw;
+    color:#ff8800;
+    font-size: 1.5vw;
+    cursor: pointer;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+}
+
+.button-icon{
+    background-color: transparent;
+    width:2vw;
+    height:2vw;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: none;
+  }
+
+.rules{
+    display: flex;
+    flex-direction: column;
+}

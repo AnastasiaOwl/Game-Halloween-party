@@ -1,42 +1,62 @@
 .game-field{
     display:flex;
-    width: 35vw;
-    height: 40vw;
+    width: 38vw;
+    height: 38vw;
     justify-content: space-evenly;
-    background-color: rgb(162, 162, 255);
+    background-color: rgba(237, 158, 23, 0.592);
     flex-wrap: wrap;
 }
 
 .icon{
-    background-color: white;
-    width:5vw;
-    height:5vw;
+    background-color: transparent;
+    width:3vw;
+    height:3vw;
+    margin-left: 0.2vw;
+    margin-right: 0.2vw;
     cursor: pointer; 
     color:black;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    border: 1px solid black;
+    border: none;
 }
 
 .row{
     display: flex;
-    width: 35vw;
+    width: 38vw;
     justify-content: space-around;
 }
 
-.heart{
-    background-image: url('../icons-images/heart.png');
+.bat{
+    background-image: url('../icons-images/bat.png');
 }
 
-.clubs{
-    background-image: url('../icons-images/clubs.png');
+.spider{
+    background-image: url('../icons-images/spider.png');
 }
 
-.spades{
-    background-image: url('../icons-images/spades.png');
+.hat{
+    background-image: url('../icons-images/hat.png');
 }
 
-.diamonds{
-    background-image: url('../icons-images/diamonds.png');
+.ghost{
+    background-image: url('../icons-images/ghost.png');
+}
+
+.pumpkin{
+    background-image: url('../icons-images/pumpkin.png');
+}
+
+.score{
+    display: flex;
+    position: absolute; 
+    top: 2vh;
+    right: 1.5vw;
+}
+
+.timer{
+    display: flex;
+    position: absolute; 
+    top: 6vh;
+    right: 1.5vw;
 }
