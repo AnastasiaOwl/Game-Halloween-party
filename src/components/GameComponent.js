@@ -1,4 +1,6 @@
 import React, {useState, useRef, useEffect} from "react"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {faGear} from '@fortawesome/free-solid-svg-icons';
 import "../styles/game.css"
 import GameOver from './GameOver';
 import bat from '../icons-images/bat.png';
@@ -6,9 +8,11 @@ import ghost from '../icons-images/ghost.png';
 import hat from '../icons-images/hat.png';
 import spider from '../icons-images/spider.png';
 import pumpkin from '../icons-images/pumpkin.png';
+import SettingsModal from "./SettingsModal";
 
 function GameComponent(){
     const iconsType = [bat, ghost, hat, spider, pumpkin];
+    
 
     const pickRandomIcons = (rows, columns) => {
         let icons = [];
@@ -28,11 +32,20 @@ function GameComponent(){
     const [score, setScore] = useState(0); 
     const [isGameOver, setIsGameOver] = useState(false); 
     const [timerStarted, setTimerStarted] = useState(false); 
+    const [showSettings, setShowSettings]= useState(false);
     const [timeLeft, setTimeLeft] = useState(300); // fix add 300 c
     const timerRef = useRef(null);
 
-    const closeMap = () => {
-        setShowMap(false); 
+    const closeGameOver = () => {
+        setIsGameOver(false); 
+      }
+
+      const openSettings = () => {
+        setShowSettings(true); 
+       }
+     
+       const closeSettings = () => {
+        setShowSettings(false); 
       }
     
 
@@ -176,6 +189,8 @@ const fallAndFill = (rowIndex, columnIndex) => {
 
     return(
     <>
+        <SettingsModal showSettings={showSettings} closeSettings={closeSettings}/>
+        <button type="button" className='settings' onClick={openSettings}><FontAwesomeIcon icon={faGear}/></button>
         <div className="score">Score: {score}</div>
         <div className="timer">Time Left: {Math.floor(timeLeft / 60)}:{('0' + (timeLeft % 60)).slice(-2)}</div>
         <div className="game-field">
@@ -192,7 +207,7 @@ const fallAndFill = (rowIndex, columnIndex) => {
                     </div>
                 ))}
             </div>
-        <GameOver showMap={isGameOver} closeMap={closeMap} handleRestart={handleRestart} score={score}/>
+        <GameOver showGameOver={isGameOver} closeGameOver={closeGameOver} handleRestart={handleRestart} score={score}/>
     </>
     )
     }

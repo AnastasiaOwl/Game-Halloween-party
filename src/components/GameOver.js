@@ -4,12 +4,12 @@ import '../styles/App.css';
 
 import pumpkinButton from '../icons-images/pumpkin-button.png';
 
-function GameOver({ showMap, closeMap, handleRestart, score}) {
+function GameOver({ showGameOver, closeGameOver, handleRestart, score}) {
 
     return (
         <>
-        {showMap && (
-            <Modal onClose={closeMap}>
+        {showGameOver && (
+            <Modal onClose={closeGameOver}>
                 <form className='gameOver-form'>
                     <div className="gameOver-title">Game over!</div>
                     <div className="gameOver-massage">Time is up. Your score: {score}. Do you want to try again?

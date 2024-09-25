@@ -28,4 +28,6 @@
   border-radius: 2vw;
   z-index: 1000;
 }
-
+.gameOver-form{
+  width: 48vw;
+}
