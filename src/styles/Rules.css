@@ -126,9 +126,10 @@
         place-self: center;
         font-size: 1.3vw;
         align-items: center;
-        justify-content: center;
         margin-left: 4vw;
         margin-bottom: 3.5vw;
+        height: 27vw;
+        justify-content: space-evenly;
     }
     
   }
