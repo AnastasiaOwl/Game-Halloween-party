@@ -31,3 +31,16 @@
 .gameOver-form{
   width: 48vw;
 }
+
+@media (max-width: 480px) {
+  .overlay{
+    position: fixed;
+    width: 80vw; 
+    height: 55vw; 
+    background-color: rgba(0, 0, 0, 0.8); 
+    place-self: center;
+    border-radius: 2vw;
+    z-index: 1000;
+  }
+}
+

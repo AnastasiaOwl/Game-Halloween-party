@@ -3,7 +3,7 @@ import "../styles/Rules.css"
 import pumpkinGuide from '../icons-images/pumpkin-button.png';
 
 
-function RulesComponent({ onClose }){
+function RulesComponent({ onClose}){
     return(
         <>
         <div className="rules">

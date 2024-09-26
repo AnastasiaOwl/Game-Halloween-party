@@ -8,11 +8,34 @@ import ghost from '../icons-images/ghost.png';
 import hat from '../icons-images/hat.png';
 import spider from '../icons-images/spider.png';
 import pumpkin from '../icons-images/pumpkin.png';
+import useSound from 'use-sound';
+import boo from '../sound-effects/boo.mp3';
+import batSound from '../sound-effects/batSound.mp3';
+import witchSound from '../sound-effects/witchSound.mp3';
+import spiderSound from '../sound-effects/spiderSound.mp3';
+import pumpkinSound from '../sound-effects/pumpkinSound.mp3';
 import SettingsModal from "./SettingsModal";
 
-function GameComponent(){
+function GameComponent({ toggleMusic, isMusicPlaying, handleVolumeChange, volume }){
     const iconsType = [bat, ghost, hat, spider, pumpkin];
+
+    const [isSoundOn, setIsSoundOn] = useState(true); 
+    const [soundVolume, setSoundVolume] = useState(0.5);
     
+    const [playBoo] = useSound(boo, {volume: soundVolume});
+    const [playBat] = useSound(batSound, {volume: soundVolume});
+    const [playWitch] = useSound(witchSound, {volume: soundVolume});
+    const [playSpider]= useSound(spiderSound,{volume: soundVolume});
+    const [playPumpkin] = useSound (pumpkinSound, {volume: soundVolume});
+
+    const toggleSound = () => {
+        setIsSoundOn(!isSoundOn); 
+    };
+
+    const handleSoundVolumeChange = (e) => {
+        const newVolume = e.target.value / 100;
+        setSoundVolume(newVolume);
+    };
 
     const pickRandomIcons = (rows, columns) => {
         let icons = [];
@@ -33,7 +56,7 @@ function GameComponent(){
     const [isGameOver, setIsGameOver] = useState(false); 
     const [timerStarted, setTimerStarted] = useState(false); 
     const [showSettings, setShowSettings]= useState(false);
-    const [timeLeft, setTimeLeft] = useState(300); // fix add 300 c
+    const [timeLeft, setTimeLeft] = useState(300); 
     const timerRef = useRef(null);
 
     const closeGameOver = () => {
@@ -42,10 +65,12 @@ function GameComponent(){
 
       const openSettings = () => {
         setShowSettings(true); 
+        clearInterval(timerRef.current);
        }
      
        const closeSettings = () => {
         setShowSettings(false); 
+        startTimer();
       }
     
 
@@ -128,20 +153,17 @@ function GameComponent(){
 const fallIcons = (icons) => {
     let iconsFell = false;
 
-    // Loop through each column
     for (let col = 0; col < icons[0].length; col++) {
         let emptySpaces = [];
 
-        // Collect empty spaces in the column
         for (let row = icons.length - 1; row >= 0; row--) {
             if (icons[row][col] === null) {
-                emptySpaces.push(row);  // Collect the row index of empty spaces
+                emptySpaces.push(row); 
             } else if (emptySpaces.length > 0) {
-                // If there are empty spaces below this icon, move it down to the lowest empty space
-                let emptyRow = emptySpaces.shift();  // Get the first empty space (at the bottom)
-                icons[emptyRow][col] = icons[row][col];  // Move icon to the empty space
-                icons[row][col] = null;  // Mark the original space as empty
-                emptySpaces.push(row);  // This row is now empty, so we add it to the list of empty spaces
+                let emptyRow = emptySpaces.shift();  
+                icons[emptyRow][col] = icons[row][col];  
+                icons[row][col] = null;  
+                emptySpaces.push(row);
                 iconsFell = true;
             }
         }
@@ -163,7 +185,17 @@ const addNewIcons = (icons) => {
 
 const fallAndFill = (rowIndex, columnIndex) => {
     if (isAnimating || isGameOver) return;
-    
+
+    const clickedIcon = gameIcons[rowIndex][columnIndex];
+
+    if (isSoundOn) {
+        if (clickedIcon === ghost) playBoo();
+        if (clickedIcon === bat) playBat();
+        if (clickedIcon === hat) playWitch();
+        if (clickedIcon === spider) playSpider();
+        if (clickedIcon === pumpkin) playPumpkin();
+    }
+
     if (!timerStarted) {
         startTimer(); 
         setTimerStarted(true);
@@ -189,7 +221,17 @@ const fallAndFill = (rowIndex, columnIndex) => {
 
     return(
     <>
-        <SettingsModal showSettings={showSettings} closeSettings={closeSettings}/>
+        <SettingsModal 
+        showSettings={showSettings} 
+        closeSettings={closeSettings} 
+        toggleMusic={toggleMusic}
+        isMusicPlaying={isMusicPlaying}
+        handleVolumeChange={handleVolumeChange} 
+        volume={volume}
+        isSoundOn={isSoundOn}
+        toggleSound={toggleSound} 
+        soundVolume={soundVolume}
+        handleSoundVolumeChange={handleSoundVolumeChange}/>
         <button type="button" className='settings' onClick={openSettings}><FontAwesomeIcon icon={faGear}/></button>
         <div className="score">Score: {score}</div>
         <div className="timer">Time Left: {Math.floor(timeLeft / 60)}:{('0' + (timeLeft % 60)).slice(-2)}</div>
