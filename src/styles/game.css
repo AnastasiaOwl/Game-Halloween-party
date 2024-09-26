@@ -61,6 +61,7 @@
 .score{
     display: flex;
     position: absolute; 
+    font-size: 2vw;
     top: 2vh;
     right: 1.5vw;
     color:rgb(255, 149, 0);
@@ -69,7 +70,8 @@
 .timer{
     display: flex;
     position: absolute; 
-    top: 6vh;
+    font-size: 2vw;
+    top: 7vh;
     right: 1.5vw;
     color:rgb(255, 149, 0);
 }

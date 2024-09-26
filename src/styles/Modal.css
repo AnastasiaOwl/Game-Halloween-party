@@ -10,7 +10,7 @@
     padding: 2vw;
     border-radius: 8px;
     z-index: 1000;
-    border: 0.7vw solid rgb(255, 145, 0);
+    border: 0.4vw solid rgb(255, 145, 0);
   }
 
   .close{
@@ -26,14 +26,14 @@
 .gameOver-title,
 .gameOver-massage{
   color:#ff8800;
-  font-size: 3vw;
+  font-size: 2.5vw;
   display: flex;
   align-items: center;
   flex-direction: column;
 }
 
 .gameOver-title{
-  font-size: 3.5vw;
+  font-size: 3vw;
 }
 
 .restart-button{
@@ -73,7 +73,7 @@
     padding: 2vw;
     border-radius: 8px;
     z-index: 1000;
-    border: 3px solid rgb(255, 145, 0);
+    border: 2px solid rgb(255, 145, 0);
   }
   .gameOver-title,
   .gameOver-massage{

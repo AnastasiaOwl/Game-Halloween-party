@@ -51,7 +51,7 @@
     height: 1.9vw;
     background: url('../icons-images/pumpkin-button.png');
     background-size: cover; 
-    box-shadow: 8px 2px 8px rgba(0, 0, 0, 0.912); 
+    box-shadow: 1vw 0.2vw 1.2vw rgba(0, 0, 0, 0.912); 
     border: none;
     background-color: transparent;
     cursor: pointer;

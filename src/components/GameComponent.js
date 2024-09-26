@@ -50,6 +50,7 @@ function GameComponent({ toggleMusic, isMusicPlaying, handleVolumeChange, volume
         return icons;
     };
 
+    const [paused, setPaused] = useState(false);
     const [gameIcons, setGameIcons] = useState(pickRandomIcons(11, 11));
     const [isAnimating, setIsAnimating] = useState(false); 
     const [score, setScore] = useState(0); 
@@ -65,12 +66,12 @@ function GameComponent({ toggleMusic, isMusicPlaying, handleVolumeChange, volume
 
       const openSettings = () => {
         setShowSettings(true); 
-        clearInterval(timerRef.current);
+        setPaused(true);
        }
      
        const closeSettings = () => {
         setShowSettings(false); 
-        startTimer();
+        setPaused(false);
       }
     
 
@@ -131,23 +132,29 @@ function GameComponent({ toggleMusic, isMusicPlaying, handleVolumeChange, volume
     }
 
     const startTimer = () => {
-        timerRef.current = setInterval(() => {
-            setTimeLeft(prevTime => {
-                if (prevTime <= 1) {
-                    clearInterval(timerRef.current); 
-                    setIsGameOver(true);
-                    return 0;
-                }
-                return prevTime - 1;
-            });
-        }, 1000);
+        if (!paused) { // Check if not paused before starting the timer
+            clearInterval(timerRef.current);
+            timerRef.current = setInterval(() => {
+                setTimeLeft((prevTime) => {
+                    if (prevTime <= 1) {
+                        clearInterval(timerRef.current);
+                        setIsGameOver(true);
+                        return 0;
+                    }
+                    return prevTime - 1;
+                });
+            }, 1000);
+        }
     };
 
     useEffect(() => {
+        if (!paused && showSettings === false) {
+            startTimer();
+        }
         return () => {
-            clearInterval(timerRef.current);  
+            clearInterval(timerRef.current);
         };
-    }, []);
+    }, [paused, showSettings]);
 
    
 const fallIcons = (icons) => {
