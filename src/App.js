@@ -8,8 +8,13 @@ import RulesComponent from './components/RulesComponent.js';
 function App() {
   const [showRules, setShowRules] = useState(true); 
   const [isMusicPlaying, setIsMusicPlaying] = useState(false); 
+  const [hasGameStarted, setHasGameStarted] = useState(false);
   const [volume, setVolume] = useState(0.3); 
-  const [play, { stop, sound }] = useSound(backgroundMusic, { volume });
+  const [play, { stop, sound }] = useSound(backgroundMusic, { 
+    volume,
+    loop: true,
+  });
+
 
   const toggleMusic = () => {
     if (isMusicPlaying) {
@@ -32,6 +37,7 @@ function App() {
     setShowRules(false);
     play(); 
     setIsMusicPlaying(true);
+    setHasGameStarted(true);
   };
 
   return (
@@ -45,7 +51,8 @@ function App() {
       toggleMusic={toggleMusic} 
       isMusicPlaying={isMusicPlaying}
       volume={volume}
-      handleVolumeChange={handleVolumeChange} />
+      handleVolumeChange={handleVolumeChange}
+      hasGameStarted={hasGameStarted} />
     </div>
   );
 }

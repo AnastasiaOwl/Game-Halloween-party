@@ -16,7 +16,7 @@ import spiderSound from '../sound-effects/spiderSound.mp3';
 import pumpkinSound from '../sound-effects/pumpkinSound.mp3';
 import SettingsModal from "./SettingsModal";
 
-function GameComponent({ toggleMusic, isMusicPlaying, handleVolumeChange, volume }){
+function GameComponent({ toggleMusic, isMusicPlaying, handleVolumeChange, volume, hasGameStarted}){
     const iconsType = [bat, ghost, hat, spider, pumpkin];
 
     const [isSoundOn, setIsSoundOn] = useState(true); 
@@ -132,7 +132,7 @@ function GameComponent({ toggleMusic, isMusicPlaying, handleVolumeChange, volume
     }
 
     const startTimer = () => {
-        if (!paused) { // Check if not paused before starting the timer
+        if (!paused && hasGameStarted) { 
             clearInterval(timerRef.current);
             timerRef.current = setInterval(() => {
                 setTimeLeft((prevTime) => {
@@ -148,13 +148,13 @@ function GameComponent({ toggleMusic, isMusicPlaying, handleVolumeChange, volume
     };
 
     useEffect(() => {
-        if (!paused && showSettings === false) {
+        if (!paused && showSettings === false || !paused && hasGameStarted) {
             startTimer();
         }
         return () => {
             clearInterval(timerRef.current);
         };
-    }, [paused, showSettings]);
+    }, [paused, showSettings, hasGameStarted]);
 
    
 const fallIcons = (icons) => {
